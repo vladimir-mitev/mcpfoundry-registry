@@ -1,0 +1,36 @@
+[tool]
+name = "folklore-mcp"
+version = "1.2.2"
+description = "Official public, read-only Helena Bioinformatics MCP for germline variant evidence, ACMG/AMP decision support, provenance and literature."
+author = "Helena Bioinformatics"
+homepage = "https://github.com/helena-bioinformatics/folklore-mcp"
+license = "Apache-2.0"
+
+[binary]
+entry = "folklore-mcp"
+platforms = ["darwin-arm64", "darwin-x64", "linux-x64"]
+
+[runtime]
+transport = "stdio"
+runtime = "python"
+min_version = "3.12"
+
+[permissions]
+filesystem = false
+network = ["https://api.helena.bio"]
+env_vars = ["FOLKLORE_MCP_ENABLED", "FOLKLORE_LITERATURE_ENABLED"]
+allow_exec = false
+max_memory_mb = 256
+max_cpu_percent = 60
+
+[[mcp.tools]]
+name = "search_variant_evidence"
+description = "Resolve one supported GRCh38 germline SNV or simple indel and return public Folklore evidence with provenance and ACMG/AMP decision support."
+
+[[mcp.tools]]
+name = "search_variant_literature"
+description = "Retrieve related publications from the public PubMed-derived Folklore genetics corpus; literature associations do not alter classification."
+
+[[mcp.tools]]
+name = "get_publication_details"
+description = "Return one complete public bibliographic record for a PMID produced by Folklore literature search."
