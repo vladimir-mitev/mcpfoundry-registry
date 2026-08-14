@@ -1,0 +1,32 @@
+[tool]
+name = "ask-helena-mcp"
+version = "1.0.4"
+description = "Official answers about Helena Bioinformatics and its products, with citations to public sources."
+author = "Helena Bioinformatics"
+homepage = "https://github.com/helena-bioinformatics/ask-helena-mcp"
+license = "Apache-2.0"
+
+[binary]
+entry = "python3 ask_helena_bridge.py"
+platforms = ["darwin-arm64", "darwin-x64", "linux-x64"]
+
+[runtime]
+transport = "stdio"
+runtime = "python"
+min_version = "3.11"
+
+[permissions]
+filesystem = false
+network = ["https://api.helena.bio"]
+env_vars = []
+allow_exec = false
+max_memory_mb = 256
+max_cpu_percent = 60
+
+[[mcp.tools]]
+name = "search_public_knowledge"
+description = "Search the approved public Helena Bioinformatics corpus and return bounded evidence with traceable sources."
+
+[[mcp.tools]]
+name = "ask_public_knowledge"
+description = "Return a grounded answer about Helena Bioinformatics or its published products with citations to public sources."
