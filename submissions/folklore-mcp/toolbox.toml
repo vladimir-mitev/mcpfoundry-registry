@@ -1,6 +1,6 @@
 [tool]
 name = "folklore-mcp"
-version = "1.3.1"
+version = "1.3.3"
 description = "Official public, read-only Helena Bioinformatics MCP for germline variant evidence, ACMG/AMP decision support, provenance and semantic scientific-literature search."
 author = "Helena Bioinformatics"
 homepage = "https://github.com/helena-bioinformatics/folklore-mcp"
