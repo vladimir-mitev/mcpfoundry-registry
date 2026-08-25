@@ -1,7 +1,7 @@
 [tool]
 name = "folklore-mcp"
-version = "1.2.2"
-description = "Official public, read-only Helena Bioinformatics MCP for germline variant evidence, ACMG/AMP decision support, provenance and literature."
+version = "1.3.1"
+description = "Official public, read-only Helena Bioinformatics MCP for germline variant evidence, ACMG/AMP decision support, provenance and semantic scientific-literature search."
 author = "Helena Bioinformatics"
 homepage = "https://github.com/helena-bioinformatics/folklore-mcp"
 license = "Apache-2.0"
@@ -34,3 +34,7 @@ description = "Retrieve related publications from the public PubMed-derived Folk
 [[mcp.tools]]
 name = "get_publication_details"
 description = "Return one complete public bibliographic record for a PMID produced by Folklore literature search."
+
+[[mcp.tools]]
+name = "search_literature_corpus"
+description = "Semantically search public scientific literature with natural language, PMID, DOI, PMCID, gene, variant, phenotype, HPO or OMIM anchors."
