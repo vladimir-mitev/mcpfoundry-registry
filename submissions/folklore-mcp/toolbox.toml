@@ -1,17 +1,19 @@
 [tool]
 name = "folklore-mcp"
-version = "1.3.3"
+version = "1.4.2"
 description = "Official public, read-only Helena Bioinformatics MCP for germline variant evidence, ACMG/AMP decision support, provenance and semantic scientific-literature search."
 author = "Helena Bioinformatics"
 homepage = "https://github.com/helena-bioinformatics/folklore-mcp"
 license = "Apache-2.0"
 
+# The source adapter entry starts an HTTP ASGI server, not a stdio MCP process.
+# Hosted connection and installer compatibility are documented in README.md.
 [binary]
 entry = "folklore-mcp"
 platforms = ["darwin-arm64", "darwin-x64", "linux-x64"]
 
 [runtime]
-transport = "stdio"
+transport = "streamable-http"
 runtime = "python"
 min_version = "3.12"
 
