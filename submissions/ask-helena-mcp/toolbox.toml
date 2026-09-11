@@ -1,6 +1,6 @@
 [tool]
 name = "ask-helena-mcp"
-version = "1.0.4"
+version = "1.0.5"
 description = "Official answers about Helena Bioinformatics and its products, with citations to public sources."
 author = "Helena Bioinformatics"
 homepage = "https://github.com/helena-bioinformatics/ask-helena-mcp"
