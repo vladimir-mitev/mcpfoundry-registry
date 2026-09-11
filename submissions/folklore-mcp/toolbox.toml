@@ -1,7 +1,7 @@
 [tool]
 name = "folklore-mcp"
-version = "1.4.2"
-description = "Official public, read-only Helena Bioinformatics MCP for germline variant evidence, ACMG/AMP decision support, provenance and semantic scientific-literature search."
+version = "1.5.0"
+description = "Bioinformatics MCP for genomic variant interpretation, gene-disease evidence and literature."
 author = "Helena Bioinformatics"
 homepage = "https://github.com/helena-bioinformatics/folklore-mcp"
 license = "Apache-2.0"
@@ -20,7 +20,7 @@ min_version = "3.12"
 [permissions]
 filesystem = false
 network = ["https://api.helena.bio"]
-env_vars = ["FOLKLORE_MCP_ENABLED", "FOLKLORE_LITERATURE_ENABLED"]
+env_vars = ["FOLKLORE_MCP_ENABLED", "FOLKLORE_LITERATURE_ENABLED", "FOLKLORE_GENE_DISEASE_ENABLED"]
 allow_exec = false
 max_memory_mb = 256
 max_cpu_percent = 60
@@ -40,3 +40,11 @@ description = "Return one complete public bibliographic record for a PMID produc
 [[mcp.tools]]
 name = "search_literature_corpus"
 description = "Semantically search public scientific literature with natural language, PMID, DOI, PMCID, gene, variant, phenotype, HPO or OMIM anchors."
+
+[[mcp.tools]]
+name = "get_gene_disease_associations"
+description = "Retrieve ClinGen Gene-Disease Validity assertions for one exact gene symbol or HGNC identifier with source provenance, inheritance and pagination."
+
+[[mcp.tools]]
+name = "search_disease_genes"
+description = "Search ClinGen assertions by exact MONDO identifier or disease-name substring, preserving distinct disease identities and coverage limits."
