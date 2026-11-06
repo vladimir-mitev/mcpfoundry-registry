@@ -1,7 +1,7 @@
 [tool]
 name = "folklore-mcp"
-version = "1.5.0"
-description = "Bioinformatics MCP for genomic variant interpretation, gene-disease evidence and literature."
+version = "2.0.0"
+description = "Germline ACMG/AMP, gene profiles, literature, and optional API-key case analysis."
 author = "Helena Bioinformatics"
 homepage = "https://github.com/helena-bioinformatics/folklore-mcp"
 license = "Apache-2.0"
@@ -26,25 +26,41 @@ max_memory_mb = 256
 max_cpu_percent = 60
 
 [[mcp.tools]]
-name = "search_variant_evidence"
-description = "Resolve one supported GRCh38 germline SNV or simple indel and return public Folklore evidence with provenance and ACMG/AMP decision support."
+name = "classify_germline_variant"
+description = "Classify one GRCh38 germline nuclear SNV or simple indel smaller than 50 bp under ACMG/AMP. Accepts genomic, coding or protein HGVS, coordinates, SPDI, rsID or a returned canonical key. Returns normalized identity, automated classification, applied criteria, ClinVar assertions, population frequencies, annotations and source provenance when available. Ambiguous input returns candidates for selection."
 
 [[mcp.tools]]
 name = "search_variant_literature"
-description = "Retrieve related publications from the public PubMed-derived Folklore genetics corpus; literature associations do not alter classification."
+description = "Resolve one GRCh38 germline variant and retrieve publications from the PubMed-derived genetics corpus. Exact variant mentions rank ahead of broader gene associations. Returns match types, source links, corpus provenance and retrieval time."
 
 [[mcp.tools]]
 name = "get_publication_details"
-description = "Return one complete public bibliographic record for a PMID produced by Folklore literature search."
+description = "Retrieve one PMID from the PubMed-derived genetics corpus, including title, abstract, authors, journal, publication types, MeSH terms, gene and variant mentions, retraction status and PubMed/PMC links."
 
 [[mcp.tools]]
 name = "search_literature_corpus"
-description = "Semantically search public scientific literature with natural language, PMID, DOI, PMCID, gene, variant, phenotype, HPO or OMIM anchors."
+description = "Search the genetics Literature Corpus by question, PMID, DOI, PMCID, gene, variant, phenotype, HPO or OMIM concept. Known publication identifiers provide exact anchors. Returns ranked publications, match types, scores and source links."
 
 [[mcp.tools]]
 name = "get_gene_disease_associations"
-description = "Retrieve ClinGen Gene-Disease Validity assertions for one exact gene symbol or HGNC identifier with source provenance, inheritance and pagination."
+description = "Find diseases associated with an exact gene symbol or HGNC identifier. Returns ClinGen gene-disease validity assertions, relation-specific inheritance, source reports and snapshot provenance, including conflicting and limited assertions."
 
 [[mcp.tools]]
 name = "search_disease_genes"
-description = "Search ClinGen assertions by exact MONDO identifier or disease-name substring, preserving distinct disease identities and coverage limits."
+description = "Find genes associated with an exact MONDO identifier or disease-name search. Returns ClinGen validity assertions with inheritance, source reports and snapshot provenance. Name searches can return multiple disease identities."
+
+[[mcp.tools]]
+name = "resolve_gene"
+description = "Resolve a human gene symbol, previous symbol, alias, HGNC, Ensembl or NCBI Gene identifier. Returns exact, alias, ambiguous, not_found or withdrawn status with candidates and identity_snapshot_id. Use a selected HGNC gene_id and snapshot_id with get_gene_profile. Gene-plus-HGVS and variant expressions use classify_germline_variant."
+
+[[mcp.tools]]
+name = "get_gene_profile"
+description = "Read the selected gene_id and immutable snapshot_id from resolve_gene. Returns overview, disease validity, dosage, mechanisms, transcripts, native assemblies, constraint, ClinVar summaries and consequences, expression, GWAS, phenotypes and protein/pathways with source assertions, coverage, count units and null values. get_gene_section supplies further pages. Live search_gene_literature is separate from the snapshot literature section."
+
+[[mcp.tools]]
+name = "get_gene_section"
+description = "Read a gene-profile section using gene_id, snapshot_id and its returned opaque cursor. Returns source records, assembly/release, coverage, totals, count units and provenance. snapshot_unavailable requires a fresh resolution/profile request."
+
+[[mcp.tools]]
+name = "search_gene_literature"
+description = "Retrieve a live publication capture for a resolved gene_id and snapshot_id. Returns source links, match labels, capture time/hash, degradation and gene/snapshot/sort-bound cursors. This capture is separate from the immutable reference snapshot and contains no abstracts."
